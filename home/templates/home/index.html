@@ -1,0 +1,15 @@
+<head>
+<title>
+    Zens of Python
+</title>
+</head>
+<body>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}"/>
+{% if zens %}
+{% for zen in zens %}
+<div>{{zen}}</br></div>
+{% endfor %}
+{% else %}
+{% endif %}
+</body>

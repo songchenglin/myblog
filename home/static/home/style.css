@@ -1,0 +1,15 @@
+div {
+    color:purple;
+    font-family:monospace;
+    font-weight:bold;
+    font-size:1.5em;
+    position:relative;
+    left:20px;
+    white-space:nowrap;
+}
+body {
+    background-image:url("images/background.jpg");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-attachment:fixed;
+}
