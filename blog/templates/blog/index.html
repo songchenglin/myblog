@@ -1,20 +1,47 @@
-<h1>Blogs list</h1>
-{% for blog in blogs %}
-  <div class="blog_body">
-      <div class="blog_title"><a href="">{{blog.caption}}</a></div>
-      <div class="blog_info">
-          <ul class="blog_info_list">
-              <li>Classification:{{blog.classification}}</li>
-              <li>Publish time:{{blog.publish_time|date:"Y-m-d H:i"}}</li>
-              <li>Tags:
-                {% for tag in blog.tags.all %}
-                    {{tag.tag_name}}
-                {% endfor %}
-              </li>
-          </ul>
-      </div>
-      <div class="blog_content">
-          {{blog.content}}
-      </div>
-  </div>
-{% endfor %}
+<head>
+    <title>Scl Blog</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}"/>
+</head>
+<body>
+    <h1>Blogs list</h1>
+    <div class="content_body">
+        {% for blog in blogs %}
+        <div class="blog_body">
+            <div class="blog_body">
+              <div class="blog_title"><a href="">{{blog.caption}}</a></div>
+              <div class="blog_info1">
+                  <span class="blog_info1_list">
+                      <span class="li_small_1">
+                          Classification:{{blog.classification}}
+                      </span>
+                      <span class="li_small_1">
+                          Publish time:{{blog.publish_time|date:"Y-m-d H:i"}}
+                      </span>
+                  </span>
+              </div>
+              <div class="blog_info2">
+                  <span class="blog_info2_list">
+                      <span class="li_small_2">
+                      Tags:
+                        {% for tag in blog.tags.all %}
+                            {{tag.tag_name}}
+                        {% endfor %}
+                      </span>
+                  </span>
+              </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="blog_content">
+                  {{blog.content}}
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="footer">
+        <div id="footer_logo"></div>
+        <div id="siteinfo">&copy;Songchenglin, 2014, Based on Django1.7</div>
+    </div>
+</body>
