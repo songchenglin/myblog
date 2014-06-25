@@ -1,0 +1,20 @@
+<h1>Blogs list</h1>
+{% for blog in blogs %}
+  <div class="blog_body">
+      <div class="blog_title"><a href="">{{blog.caption}}</a></div>
+      <div class="blog_info">
+          <ul class="blog_info_list">
+              <li>Classification:{{blog.classification}}</li>
+              <li>Publish time:{{blog.publish_time|date:"Y-m-d H:i"}}</li>
+              <li>Tags:
+                {% for tag in blog.tags.all %}
+                    {{tag.tag_name}}
+                {% endfor %}
+              </li>
+          </ul>
+      </div>
+      <div class="blog_content">
+          {{blog.content}}
+      </div>
+  </div>
+{% endfor %}
