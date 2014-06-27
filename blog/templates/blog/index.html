@@ -1,47 +1,33 @@
-<head>
-    <title>Scl Blog</title>
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}"/>
-</head>
-<body>
-    <h1>Blogs list</h1>
-    <div class="content_body">
-        {% for blog in blogs %}
-        <div class="blog_body">
-            <div class="blog_body">
-              <div class="blog_title"><a href="">{{blog.caption}}</a></div>
-              <div class="blog_info1">
-                  <span class="blog_info1_list">
-                      <span class="li_small_1">
-                          Classification:{{blog.classification}}</br>
-                      </span>
-                      <span class="li_small_1">
-                          Publish time:{{blog.publish_time|date:"Y-m-d H:i"}}
-                      </span>
-                  </span>
-              </div>
-              <div class="blog_info2">
-                  <span class="blog_info2_list">
-                      <span class="li_small_2">
-                      Tags:</br>
-                      {% for tag in blog.tags.all %}
-                          {{tag.tag_name}}
-                      {% endfor %}
-                      </span>
-                  </span>
-              </div>
-                      </li>
-                  </ul>
-              </div>
-              <div class="blog_content">
-                  {{blog.content}}
-              </div>
-            </div>
-        </div>
-        {% endfor %}
+{% block title %}Scl's Blog{% endblock %}
+{% block content_body %}
+<div class="main_body">
+    {% for blog in blogs %}
+    <div class="blog_body">
+      <div class="blog_title"><a href="">{{blog.caption}}</a></div>
+      <div class="blog_info1">
+          <span class="blog_info1_list">
+              <span class="li_small_1">
+                  Classification:{{blog.classification}}</br>
+              </span>
+              <span class="li_small_1">
+                  Publish time:{{blog.publish_time|date:"Y-m-d H:i"}}
+              </span>
+          </span>
+      </div>
+      <div class="blog_info2">
+          <span class="blog_info2_list">
+              <span class="li_small_2">
+              Tags:</br>
+              {% for tag in blog.tags.all %}
+                  {{tag.tag_name}}
+              {% endfor %}
+              </span>
+          </span>
+      </div>
+      <div class="blog_content">
+          {{blog.content}}
+      </div>
     </div>
-    <div class="footer">
-        <div id="footer_logo"></div>
-        <div id="siteinfo">&copy;Songchenglin, 2014, Based on Django1.7</div>
-    </div>
-</body>
+    {% endfor %}
+</div>
+{% endblock %}

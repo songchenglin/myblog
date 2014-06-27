@@ -1,0 +1,19 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html";charset=utf-8"/>
+    <title>{% block title %}aa{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}"/>
+</head>
+<body>
+    <div class="container">
+        <div class="content_body">
+            {% block content_body %}{% endblock %}
+        </div>
+        <div class="footer">
+            <div id="footer_logo"></div>
+            <div id="site_info">&copy;Songchenglin, 2014, Based on Django1.7</div>
+        </div>
+    </div>
+</body>
+</html>
