@@ -6,5 +6,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', include('home.urls')),
     url(r'^blog/$', include('blog.urls')),
+    url(r'^comments/',include('django.contrib.comments.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
