@@ -6,25 +6,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}"/>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="top">
-                <a href=""><img src="{% static 'blog/images/python-logo.png' %}" alt="LOGO" name="logo" id="logo"/></a>
-                <div id="nav_div">
-                    <ul id="top_nav">
-                        <li><a href="/" class="a_normal">Home</a></li>
-                        <li><a href="" class="a_normal">About</a></li>
-                    </ul>
-                </div>
+    <div class="header">
+        <div class="top">
+            <a href=""><img src="{% static 'blog/images/python-logo.png' %}" alt="LOGO" name="logo" id="logo"/></a>
+            <div class="nav_div">
+                <a class="nav_btn" href="/" class="a_normal">Home</a>
+                <a class="nav_btn" href="" class="a_normal">About</a>
             </div>
         </div>
+    </div>
+    <div class="container">
         <div class="content_body">
             {% block content_body %}{% endblock %}
         </div>
-        <div class="footer">
-            <div id="footer_logo"></div>
-            <div id="site_info">&copy;Songchenglin, 2014, Based on Django1.7</div>
-        </div>
+    </div>
+    <div class="footer">
+        <div id="footer_logo"></div>
+        <div id="site_info">&copy;Songchenglin, 2014, Based on Django1.7</div>
     </div>
 </body>
 </html>

@@ -1,10 +1,39 @@
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #eeeeee;
+}
 .footer {
     position: absolute;
     background-color: #f9f9f9;
     z-index: 1000;
-    width: 99%;
+    width: 100%;
     bottom: 0;
     border-top-width: 2px;
     border-top-style: solid;
     border-top-color: #eeeeee;
+}
+.container {
+    padding-bottom: 120px;
+    padding-top: 160px;
+    width: 100%;
+    background-color: #fff;
+    margin: auto;
+}
+.nav_div {
+    float: right;
+}
+.nav_btn {
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 22px;
+    padding-left: 22px;
+    text-decoration: none;
+    color: #5e5e5e;
+    font-size: 18px;
 }
