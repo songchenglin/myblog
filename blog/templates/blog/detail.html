@@ -1,0 +1,97 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{blog.caption}}-Scl's blog{% endblock %}
+{% load comments %}
+{% block content_body %}
+<div class="main_body">
+    <div class="blog_body">
+        <div class="blog_title">{{blog.caption}}</div>
+        <div class="blog_info1">
+            <span class="blog_info1_list">
+                <span class="li_small_1">Classification:<a href="">{{blog.classification}}</a></span>
+                <span class="li_small_1">Author:<a href="">{{blog.author}}</a></span>
+                <span class="li_small_1">Publish:<a href="">{{blog.publish_time}}</a></span>
+            </span>
+        </div>
+        <div class="blog_splitline"></div>
+        <div class="blog_content">{{blog.content}}</div>
+    </div>
+</div>
+<div class="comments">
+    <a name="blog_comments" id="comments"></a>
+    {% get_comment_count for blog as comment_count %}
+    <div class="comments_nav">Comments({{comment_count}})</div>
+    {% ifequal comment_count 0 %}
+    <div class="comments_body">
+        <div class="comment_container">No comment now.</div>
+    </div>
+    {% else %}
+    {% get_comment_list for blog as comments %}
+    <div class="comments_body">
+        <div class="comment_container">
+        {% for comment in comments %}
+            <div class="comment_id">
+                <a href="{{comment.user_url}}"><img src="/static/images/hp.jpg" /></a>
+            </div>
+            <div class="cmt_user_info">
+                <span class="li_small_2">{{comment.user_name}}</span>
+                <span class="li_small_2">{{comment.submit_date|date:"Y-m-d H:i"}}</span>
+                <span class="reply_comment" id="{{comment.user_name}}">
+                    <a href="#newcomment">Reply</a>
+                </span>
+            </div>
+        {% endfor}
+        </div>
+    </div>
+    {% endifequal %}
+</div>
+<div class="comments_nav">New comments</div>
+{% get_comment_form for blog as blog_form %}
+<div class="comments_body">
+    <div class="comment_form">
+        <form class="form-horizontal" action="{% comment_form_target %}" method="post" id="cmt_sub_form">
+            {% csrf_token %}
+            {{blog_form.object_pk}}
+            {{blog_form.content_type}}
+            {{blog_form.timestamp}}
+            {{blog_form.site}}
+            {{blog_form.submit_date}}
+            {{blog_form.security_hash}}
+            <div class="control-group">
+                <label class="control-label" for="id_name">User name: </label>
+                <div class="controls">
+                    <input class="input-xlarge" id="id_name" type="text" name="name" placeholder="Input your name" value="{{user.name}}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="id_email">User email: </label>
+                <div class="controls">
+                    <input class="input-xlarge" id="id_email" type="email" name="email" placeholder="Input your email" value="{{user.email}}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="id_url">User url: </label>
+                <div class="controls">
+                    <input class="input-xlarge" id="id_url" type="url" name="url" placeholder="Input your url" value="{{user.url}}"/>
+                </div>
+            </div>
+            <a name="newcomment" id="newcomment"></a>
+            <div class="control-group">
+                <label class="control-label" for="id_comment">Comment: </label>
+                <div class="cotrols">
+                    <textarea class="input-xlarge comment" id="id_comment" name="comment" placeholder="Please input comment content"></textarea>
+                </div>
+                <p style="display:none;">
+                    <label for="id_honeypot">IGNORED!</label>
+                    <input type="text" name="honeypot" id="id_honeypot">
+                </p>
+                <div class="controls">
+                    <div class="form-actions">
+                        <input class="btn tbn-info" id="submit_btn" type="submit" name="submit" value="Submit"/>
+                        <input type="hidden" name="next" value="{% url 'blog:detail' blog.id %}"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
