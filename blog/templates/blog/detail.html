@@ -20,7 +20,7 @@
     <a name="blog_comments" id="comments"></a>
     {% get_comment_count for blog as comment_count %}
     <div class="comments_nav">Comments({{comment_count}})</div>
-    {% ifequal comment_count 0 %}
+    {% if not comment_count %}
     <div class="comments_body">
         <div class="comment_container">No comment now.</div>
     </div>
@@ -39,10 +39,10 @@
                     <a href="#newcomment">Reply</a>
                 </span>
             </div>
-        {% endfor}
+        {% endfor %}
         </div>
     </div>
-    {% endifequal %}
+    {% endif %}
 </div>
 <div class="comments_nav">New comments</div>
 {% get_comment_form for blog as blog_form %}
