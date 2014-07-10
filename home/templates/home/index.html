@@ -6,6 +6,9 @@
 <body>
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}"/>
+<p class="blog_entry">
+    <a href="{% url 'blog:blog_list' %}">Enter Songchenglin's Blog =====>></a>
+</p></br>
 {% if zens %}
 {% for zen in zens %}
 <div>{{zen}}</br></div>
