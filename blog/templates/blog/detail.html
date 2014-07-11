@@ -33,8 +33,9 @@
                 <a href="{{comment.user_url}}"><img src="/static/images/hp.jpg" /></a>
             </div>
             <div class="cmt_user_info">
-                <span class="li_small_2">{{comment.user_name}}</span>
-                <span class="li_small_2">{{comment.submit_date|date:"Y-m-d H:i"}}</span>
+                <span class="li_small_2">{{comment.user_name}}</span></br>
+                <span class="li_small_2">{{comment.submit_date|date:"Y-m-d H:i"}}</span></br>
+                <span class="li_small_2">{{comment.comment}}</span></br>
                 <span class="reply_comment" id="{{comment.user_name}}">
                     <a href="#newcomment">Reply</a>
                 </span>
