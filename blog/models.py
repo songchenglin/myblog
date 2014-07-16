@@ -11,7 +11,15 @@ class Classification(models.Model):
     def __unicode__(self):
         return self.name
 class Author(models.Model):
+    GENDER_CHOICES = (
+        ('M','male'),
+        ('F','female'),
+        ('S','shemale'),
+    )
     name = models.CharField(max_length = 30)
+    gender = models.CharField(max_length = 8,
+                              choices = GENDER_CHOICES,
+                              default = 'S')
     email = models.EmailField(blank = True)
     website = models.URLField(blank = True)
     def __unicode__(self):
